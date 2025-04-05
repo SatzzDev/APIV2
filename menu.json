@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Downloader",
+    "icon": "mdi mdi-arrow-down-circle-outline",
+    "submenu": [
+      { "label": "Spotify", "link": "/api/spotifydl" },
+      { "label": "SoundCloud", "link": "/api/soundclouddl" },
+      { "label": "Pinterest", "link": "/api/pinterest/download" },
+      { "label": "Mediafire", "link": "/api/mediafire" }
+    ]
+  },
+  {
+    "name": "Search",
+    "icon": "mdi mdi-magnify",
+    "submenu": [
+      {
+        "label": "Spotify Search",
+        "link": "/api/spotify?query=chandelier"
+      },
+      {
+        "label": "SoundCloud Search",
+        "link": "/api/soundcloud?query=DJ LALA BEATLOOP MP CLUB PEKANBARU 2025"
+      },
+      {
+        "label": "Pinterest Search",
+        "link": "/api/pinterest/search?query=siesta%20icon"
+      },
+      { "label": "Wallpaper", "link": "/api/wallpaper?query=digital art" },
+      { "label": "xnxxsearch", "link": "/api/xnxxsearch?query=step mom" }
+    ]
+  },
+  {
+    "name": "Islamic",
+    "icon": "mdi mdi-star-crescent",
+    "submenu": [
+      { "label": "Jadwal Sholat", "link": "/api/jadwal-sholat?kota=pekanbaru" },
+      { "label": "Quran Surah", "link": "/api/surah/1" },
+      { "label": "Quran Ayat", "link": "/api/surah-ayat/17/32" }
+    ]
+  }
+]
