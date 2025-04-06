@@ -70,23 +70,31 @@ morgan("dev")(req, res, next);
 next();
 }
 });
+const logs=[]
 
-// Total request counter
-app.use((req, res, next) => {
-requestCount++;
-next();
-});
 
 //━━━━━━━━━━━━━━━[ Routes ]━━━━━━━━━━━━━━━━━//
 
 app.use("/api", apiRoutes);
 const menuItems = JSON.parse(fs.readFileSync(path.join(__dirname, 'menu.json'), 'utf8'));
+
+
 app.get("/", async (req, res) => {
-res.render('index', { total_request: requestCount, endpoint_total: getFeatureList(app).length, menuItems });
+let uptime=os.uptime(),hours=(uptime/3600).toFixed(1)
+let cpu=process.cpuUsage().user/10000
+let ram={used:Math.round(process.memoryUsage().rss/1024/1024),total:Math.round(os.totalmem()/1024/1024)}
+let system={cpu:cpu.toFixed(2),ram,platform:os.platform(),arch:os.arch(),node:process.version}
+let battery={level:80,charging:true} // contoh dummy, kalau butuh real client-side pakai JS
+let runtime={uptime:`${Math.floor(uptime/60)} mins`,hours}
+res.render('index', { logs, status:'Online', total_request: requestCount, endpoint_total: getFeatureList(app).length, system,battery,runtime,logs});
 });
 
-app.get("/embed", async (req, res) => {
-res.render('embed');
+// Total request counter
+app.use((req, res, next) => {
+logs.unshift({method:req.method,path:req.path,time:new Date().toLocaleString()})
+if(logs.length>10)logs.pop()
+requestCount++;
+next();
 });
 
 //━━━━━━━━━━━━━━━[ 404 Route ]━━━━━━━━━━━━━━━━━//
