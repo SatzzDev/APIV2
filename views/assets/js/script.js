@@ -1,5 +1,4 @@
-window.addEventListener('load', async() => {
-document.getElementById('preloader').style.display = "none";
+document.addEventListener('DOMContentLoaded', async() => {
 Swal.fire({
 title:"Welcome To SatzzAPI!",
 imageUrl:'./img/img.png',
@@ -7,36 +6,12 @@ imageWidth: 200,
 imageHeight: 200,
 background: '#121317',
 color: '#fff',
-confirmButtonColor: '#5E2FB3',
 customClass: {
 popup: 'rounded-lg shadow-lg',
 confirmButton: 'px-4 py-2'
 }
 });
 })
-var typed = new Typed('#typing', {
-strings: ['SatzzAPI'],
-typeSpeed: 70,
-backSpeed:70,
-loop: true
-});
-
-
-navigator.getBattery().then(b=>{
-let charging=b.charging
-let lvl=Math.round(b.level*100)+'% '+(charging?'(Charging)':'(Not Charging)')
-document.getElementById('batteryLevel').innerText=lvl
-let icon=document.getElementById('batteryIcon')
-icon.className=charging?'p-3 mr-4 text-green-100 bg-green-500 rounded-lg fas fa-bolt':'p-3 mr-4 text-red-100 bg-red-500 rounded-lg fas fa-battery-empty'
-})
-
-setInterval(() => {
-const now = new Date(),s=now.getSeconds(),m=now.getMinutes(),h=now.getHours();
-document.getElementById("second").style = `--value:${s};`
-document.getElementById("minute").style = `--value:${m};`
-document.getElementById("hour").style = `--value:${h%12||12};`
-document.getElementById("ampm").textContent =h>= 12?"PM":"AM";
-}, 100);
 
 let allAud = ['Aku Dah Lupa.mp3','Pica Pica (Remix).mp3','DITINGGAL BANG DIKA.mp3','DJ Kaka Main Salah FYP TIK TOK.mp3','DJ Like This Gafarastyle.mp3','Faja Skali ⧸ Dola (Versi Campur).mp3','Gak Mau Lagi (Cover Version).mp3','Garam Dan Madu.mp3','Jangan Gila Dong (Cover Version).mp3','Jangan Salah Pasangan V2.mp3','Pemberi Harapan Palsu.mp3']
 let audio = new Audio()
