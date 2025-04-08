@@ -232,11 +232,13 @@ res.json(r)
 
 
 router.get("/yts", async(req, res) => {
-var { query } = req.query;
-if (!query) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter query.'})
+var { query } = req.query
+if (!query) return res.status(400).json({ status: false, creator: "@krniwnstria", message: 'missing parameter query.' })
 let r = await yts(query)
-res.json(r)
+let videos = r.all.filter(v => v.type === 'video')
+res.json({ status: true, creator: "@krniwnstria", data: videos })
 })
+
 
 
 
