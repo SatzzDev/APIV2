@@ -76,8 +76,6 @@ const logs=[]
 //━━━━━━━━━━━━━━━[ Routes ]━━━━━━━━━━━━━━━━━//
 
 app.use("/api", apiRoutes);
-const menuItems = JSON.parse(fs.readFileSync(path.join(__dirname, 'menu.json'), 'utf8'));
-
 
 app.get("/", async (req, res) => {
 let uptime=os.uptime(),hours=(uptime/3600).toFixed(1)
