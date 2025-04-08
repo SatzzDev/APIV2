@@ -3,7 +3,7 @@ import path from 'path';
 import axios from 'axios';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-
+import yts from 'yt-search';
 
 
 
@@ -234,7 +234,7 @@ res.json(r)
 router.get("/yts", async(req, res) => {
 var { query } = req.query;
 if (!query) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter query.'})
-let r = await search(query)
+let r = await yts(query)
 res.json(r)
 })
 
